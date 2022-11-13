@@ -3,6 +3,7 @@ import { GlobalContext } from "../../context/GlobalContext";
 import CronJob from "../../utils/CronJob";
 
 import Column from "../core/Column"
+import Job from "./Job";
 
 const Jobs = () => {
   const {jobs, setJobs} = useContext(GlobalContext)
@@ -23,12 +24,7 @@ const Jobs = () => {
 
   const listItemClass = i => `${i === schedule.length - 1 ? '' : 'border-b-2 border-stone-700 '}p-3`
 
-  const jobList = !adding ? jobs.map((job, i) => (
-      <li key={i} className={listItemClass(i)}>
-        <div className="font-bold">{job.name}</div>
-        <div>{job.schedule} (<span className="text-stone-400 italic">{job.humanizedSchedule}</span>)</div>
-      </li>
-    )) : null
+  const jobList = !adding ? jobs.map((job, i) => <Job key={i} job={job} listItemClass={listItemClass} />) : null
 
   const addForm = adding ? (
     <div>
