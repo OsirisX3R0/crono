@@ -2,9 +2,10 @@ const Job = ({job, listItemClass}) => {
   
   return (
     <li className={listItemClass}>
-        <div className="font-bold">{job.name}</div>
-        <div>{job.schedule} (<span className="text-stone-400 italic">{job.humanizedSchedule}</span>)</div>
-      </li>
+      <h3 className="underline">{job.name}</h3>
+      <h4>{job.schedule}</h4>
+      <div className="text-sm text-stone-400 italic">{job.humanizedSchedule}</div>
+    </li>
   )
 }
 

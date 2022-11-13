@@ -8,10 +8,8 @@ import "./App.css";
 function App() {
   return (
     <GlobalProvider>
-      <div className="flex">
-        <Jobs />
-        <Schedule />
-      </div>
+      <Jobs />
+      <Schedule />
     </GlobalProvider>
   );
 }

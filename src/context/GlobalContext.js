@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider value={{ jobs, schedule, setJobs }}>
-      {children}
+      <div className="flex">{children}</div>
     </GlobalContext.Provider>
   );
 };
