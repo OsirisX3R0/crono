@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 import React, { createContext, useMemo, useState } from "react";
 
+import Header from "../components/header/Header";
+
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
@@ -20,6 +22,7 @@ export const GlobalProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider value={{ jobs, schedule, setJobs }}>
+      <Header />
       <div className="flex">{children}</div>
     </GlobalContext.Provider>
   );
