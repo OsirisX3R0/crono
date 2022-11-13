@@ -24,7 +24,7 @@ const Jobs = () => {
 
   const listItemClass = i => `${i === schedule.length - 1 ? '' : 'border-b-2 border-stone-700 '}p-3`
 
-  const jobList = !adding ? jobs.map((job, i) => <Job key={i} job={job} listItemClass={listItemClass(i)} />) : null
+  const jobList = jobs.map((job, i) => <Job key={i} job={job} listItemClass={listItemClass(i)} />)
 
   const addForm = adding ? (
     <div>
@@ -39,8 +39,7 @@ const Jobs = () => {
   return (
     <Column left>
       <button className="bg-green-900 rounded-md p-2" onClick={() => setAdding(true)}>New Job</button>
-      {addForm}
-      
+      {addForm}      
       <ul>
         {jobList}
       </ul>
