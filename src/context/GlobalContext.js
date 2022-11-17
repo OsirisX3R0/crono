@@ -8,10 +8,12 @@ import Layout from "../components/layout/Layout";
 export const GlobalContext = createContext();
 
 const format = "DD-MM-YYYY HH:mm";
-
+const curr = dayjs().minute();
 export const GlobalProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
   const [now, setNow] = useState(dayjs().format(format));
+  const [prevMinute, setPrevMinute] = useState(curr);
+  const [currMinute, setCurrMinute] = useState(curr);
   const schedule = useMemo(() => {
     let formattedJobs = jobs.reduce(
       (formatted, j) => [...formatted, ...j.todaysSchedule],
@@ -26,7 +28,12 @@ export const GlobalProvider = ({ children }) => {
   }, [jobs]);
 
   useInterval(() => {
-    setNow(dayjs().format(format));
+    const next = dayjs();
+    setNow(next.format(format));
+    if (next.minute() > prevMinute) {
+      setPrevMinute(currMinute);
+      setCurrMinute(next.minute());
+    }
   }, 1000);
 
   return (
