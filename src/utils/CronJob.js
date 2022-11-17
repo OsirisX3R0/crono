@@ -7,18 +7,23 @@ class CronJob {
     this.name = name;
     this.schedule = schedule;
     this.humanizedSchedule = cronstrue.toString(schedule);
-    this.todaysSchedule = [];
+  }
 
-    let interval = parser.parseExpression(schedule, { iterator: true });
+  get todaysSchedule() {
+    let schedule = [];
+
+    let interval = parser.parseExpression(this.schedule, { iterator: true });
     let time = interval.next();
 
     while (dayjs().isSame(time.value.toString(), "day")) {
-      this.todaysSchedule.push({
+      schedule.push({
         name: this.name,
         time: time.value.toString(),
       });
       time = interval.next();
     }
+
+    return schedule;
   }
 }
 
