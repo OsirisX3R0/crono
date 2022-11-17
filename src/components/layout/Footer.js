@@ -1,9 +1,25 @@
 import React from "react";
-import dayjs from "dayjs";
+import pkg from "../../../package.json";
 
 const Footer = () => {
-  // const year = useRef(dayjs().year());
-  return <footer>{dayjs().year()} OsirisX3R0</footer>;
+  return (
+    <footer>
+      <div className="left">
+        <span>
+          <a
+            href="https://github.com/OsirisX3R0/crono"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github
+          </a>
+        </span>
+      </div>
+      <div className="right">
+        <span>{`v${pkg.version}`}</span>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

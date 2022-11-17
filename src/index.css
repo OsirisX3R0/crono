@@ -39,5 +39,13 @@ h4 {
 }
 
 footer {
-  @apply w-full text-xs italic text-amber-200 mb-3 absolute bottom-0 flex justify-center;
+  @apply w-full text-xs italic text-amber-200 mb-3 absolute bottom-0 flex justify-center gap-6;
+}
+
+footer .left {
+  @apply text-right;
+}
+
+footer .right {
+
 }
