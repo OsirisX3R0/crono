@@ -1,8 +1,9 @@
 import React, { createContext, useMemo, useState } from "react";
 import dayjs from "dayjs";
 
-import Header from "../components/header/Header";
+import Header from "../components/layout/Header";
 import useInterval from "../hooks/useInterval";
+import Layout from "../components/layout/Layout";
 
 export const GlobalContext = createContext();
 
@@ -30,8 +31,7 @@ export const GlobalProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider value={{ jobs, now, schedule, setJobs }}>
-      <Header />
-      <div className="flex">{children}</div>
+      <Layout>{children}</Layout>
     </GlobalContext.Provider>
   );
 };
