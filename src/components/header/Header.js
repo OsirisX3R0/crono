@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import dayjs from "dayjs";
-import useInterval from "../../hooks/useInterval";
-
-const format = "DD-MM-YYYY HH:mm";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const Header = () => {
-  const [now, setNow] = useState(dayjs().format(format));
-
-  useInterval(() => {
-    setNow(dayjs().format(format));
-  }, 1000);
+  const { now } = useContext(GlobalContext);
 
   return (
     <header className="text-center mb-5">
