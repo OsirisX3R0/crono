@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 
 import Column from "../core/Column"
+import Item from "./Item";
 
 const Schedule = () => {
   const {schedule} = useContext(GlobalContext)
 
-  const scheduleList = schedule.map((item, i) => <li key={i} className='border-b-2 border-stone-700 p-3' style={{borderColor:item.color}}>{item.name} - {item.time}</li>)
+  const scheduleList = schedule.map((item, i) => <Item key={i} item={item} />)
 
   return (
     <Column>
