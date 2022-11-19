@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="flex">{children}</div>
+      <div className="grid grid-cols-2">{children}</div>
       <Footer />
     </>
   );
