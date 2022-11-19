@@ -35,7 +35,7 @@ const Jobs = () => {
   ) : null
 
   return (
-    <Column left>
+    <Column>
       <button className="bg-green-900 rounded-md p-2" onClick={() => setAdding(true)}>New Job</button>
       {addForm}      
       <ul>
