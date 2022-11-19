@@ -22,9 +22,7 @@ const Jobs = () => {
     setSchedule('')
   }
 
-  const listItemClass = i => `${i === schedule.length - 1 ? '' : 'border-b-2 border-stone-700 '}p-3`
-
-  const jobList = jobs.map((job, i) => <Job key={i} job={job} listItemClass={listItemClass(i)} />)
+  const jobList = jobs.map((job, i) => <Job key={i} job={job} />)
 
   const addForm = adding ? (
     <div>
