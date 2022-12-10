@@ -4,6 +4,7 @@ import CronJob from "../../utils/CronJob";
 import Button from "../core/Button";
 
 import Column from "../core/Column"
+import Field from "../core/Field";
 import Job from "./Job";
 
 const Jobs = () => {
@@ -27,17 +28,15 @@ const Jobs = () => {
 
   const addForm = adding ? (
     <div>
-      <div><label htmlFor="name">Name</label></div>
-      <div><input type="text" name="name" id="name" className="text-zinc-900" value={name} onInput={(e) => setName(e.target.value)} /></div>
-      <div><label htmlFor="schedule">Schedule</label></div>
-      <div><input type="text" name="schedule" id="schedule" className="text-zinc-900" value={schedule} onInput={(e) => setSchedule(e.target.value)} /></div>
-      <Button color="orange-700" onClick={() => addJob()}>Add</Button>
+      <Field label="Name" className="mb-2" value={name} onInput={(e) => setName(e.target.value)} />
+      <Field label="Schedule" className="mb-2" value={schedule} onInput={(e) => setSchedule(e.target.value)} />
+      <Button color="bg-orange-700" onClick={() => addJob()}>Add</Button>
     </div>
   ) : null
 
   return (
     <Column>
-      <Button color="green-700" onClick={() => setAdding(true)}>New Job</Button>
+      <Button color="bg-emerald-700" onClick={() => setAdding(true)}>New Job</Button>
       {addForm}      
       <ul>
         {jobList}
