@@ -5,7 +5,7 @@ const Item = ({ item }) => (
     className="border-b-2 border-stone-700 p-3"
     style={{ borderColor: item.color }}
   >
-    {item.name} - {item.time}
+    <span className="font-bold">{item.name}</span> - {item.time}
   </li>
 );
 

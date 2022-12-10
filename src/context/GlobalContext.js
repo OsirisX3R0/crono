@@ -1,9 +1,8 @@
 import React, { createContext, useMemo, useState } from "react";
 import dayjs from "dayjs";
 
-import Header from "../components/layout/Header";
 import useInterval from "../hooks/useInterval";
-import Layout from "../components/layout/Layout";
+import Layout from "../components/layout";
 
 export const GlobalContext = createContext();
 
