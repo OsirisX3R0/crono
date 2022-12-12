@@ -3,6 +3,8 @@ import dayjs from "dayjs";
 
 import useInterval from "../hooks/useInterval";
 import Layout from "../components/layout";
+import useLocalStorage from "../hooks/useLocalStorage";
+import useCurrentTime from "../hooks/useCurrentTime";
 
 export const GlobalContext = createContext();
 
@@ -29,17 +31,27 @@ const dates = [
   // "MMM Do, YY",
 ];
 
-const times = ["H:mm", "HH:mm", "H:mm:ss", "HH:mm:ss", "h:mm a", "h:mm:ss a"];
+const times = [
+  "H:mm",
+  //"HH:mm",
+  "H:mm:ss",
+  //"HH:mm:ss",
+  "h:mm a",
+  "h:mm:ss a",
+];
 
-const curr = dayjs();
 export const GlobalProvider = ({ children }) => {
-  const [format, setFormat] = useState("DD-MM-YYYY HH:mm");
   const [jobs, setJobs] = useState([]);
-  const [now, setNow] = useState(dayjs().format(format));
-  const [prevMinute, setPrevMinute] = useState(curr.minute());
-  const [currMinute, setCurrMinute] = useState(curr.minute());
   const [dateFormats] = useState(dates);
   const [timeFormats] = useState(times);
+  const [dateFormat, setDateFormat] = useLocalStorage(
+    "dateFormat",
+    "DD-MM-YYYY"
+  );
+  const [timeFormat, setTimeFormat] = useLocalStorage("timeFormat", "HH:mm");
+  const now = useCurrentTime(dateFormat, timeFormat, () =>
+    setJobs((prevJobs) => [...prevJobs])
+  );
   const schedule = useMemo(() => {
     let formattedJobs = jobs.reduce(
       (formatted, j) => [...formatted, ...j.todaysSchedule],
@@ -53,25 +65,19 @@ export const GlobalProvider = ({ children }) => {
     return formattedJobs;
   }, [jobs]);
 
-  useInterval(() => {
-    const next = dayjs();
-    setNow(next.format(format));
-    setPrevMinute(currMinute);
-    setCurrMinute(next.minute());
-    if (currMinute > prevMinute) {
-      setJobs((prevJobs) => [...prevJobs]);
-    }
-  }, 1000);
-
   return (
     <GlobalContext.Provider
       value={{
         jobs,
         now,
+        dateFormat,
+        timeFormat,
+        setDateFormat,
+        setTimeFormat,
         dateFormats,
         timeFormats,
-        format,
-        setFormat,
+        // format,
+        // setFormat,
         schedule,
         setJobs,
       }}
