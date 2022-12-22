@@ -9,7 +9,7 @@ const useCurrentTime = (dateFormat, timeFormat, onNewMinute) => {
     () => `${dateFormat} ${timeFormat}`,
     [dateFormat, timeFormat]
   );
-  const [now, setNow] = useState(dayjs().format(`${dateFormat} ${timeFormat}`));
+  const [now, setNow] = useState(dayjs().format(format));
   const [prevMinute, setPrevMinute] = useState(curr.minute());
   const [currMinute, setCurrMinute] = useState(curr.minute());
 

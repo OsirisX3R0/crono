@@ -1,7 +1,6 @@
 import React, { createContext, useMemo, useState } from "react";
 import dayjs from "dayjs";
 
-import useInterval from "../hooks/useInterval";
 import Layout from "../components/layout";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useCurrentTime from "../hooks/useCurrentTime";
@@ -76,8 +75,6 @@ export const GlobalProvider = ({ children }) => {
         setTimeFormat,
         dateFormats,
         timeFormats,
-        // format,
-        // setFormat,
         schedule,
         setJobs,
       }}
