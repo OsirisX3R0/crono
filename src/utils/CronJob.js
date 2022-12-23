@@ -22,6 +22,8 @@ class CronJob {
         name: this.name,
         time: time.value.toString(),
         color: this.color,
+        schedule: this.schedule,
+        humanizedSchedule: this.humanizedSchedule,
       });
       time = interval.next();
     }

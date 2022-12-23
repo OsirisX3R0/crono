@@ -3,7 +3,6 @@ import React, {
 } from 'react'
 
 const Field = ({name, items, className, ...selectProps}) => {
-  // const [name] = useState(label.toLowerCase())
   const options = items ? items.map((i) => <option value={i} key={i}>{i}</option>) : null
 
   return (

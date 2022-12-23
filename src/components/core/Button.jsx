@@ -9,7 +9,7 @@ const Button = ({color, children, ...btnProps}) => {
     setHoverColor(`hover:${bg}-${col}-${darker >= 900 ? 900 : darker}`)
   }, [color])
 
-  return <button className={`${color} ${hoverColor} rounded-md p-2`} {...btnProps}>{children}</button>
+  return <button className={`${color} ${hoverColor} xs:w-full sm:w-auto rounded-md p-2`} {...btnProps}>{children}</button>
 }
 
 export default Button

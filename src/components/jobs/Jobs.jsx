@@ -35,10 +35,10 @@ const Jobs = () => {
   ) : null
 
   return (
-    <Column>
+    <Column className="xs:h-4">
       <Button color="bg-emerald-700" onClick={() => setAdding(true)}>New Job</Button>
       {addForm}      
-      <ul>
+      <ul className="xs:hidden xs:h-0 sm:h-auto sm:block">
         {jobList}
       </ul>
     </Column>
