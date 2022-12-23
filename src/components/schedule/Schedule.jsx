@@ -9,7 +9,7 @@ const Schedule = () => {
   const scheduleList = schedule.map((item, i) => <Item key={i} item={item} />)
 
   return (
-    <div className="sm:h-[89.5vh] overflow-y-scroll p-4">
+    <div className="h-[89.5vh] overflow-y-scroll p-4">
       <ul className="w-full text-center">
         {scheduleList}
       </ul>

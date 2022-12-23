@@ -38,7 +38,7 @@ const Jobs = () => {
   )
 
   return (
-    <div className="xs:h-16 sm:h-[89.5vh] overflow-y-scroll p-4">
+    <div className="xs:h-16 sm:h-[89.5vh] xs:overflow-hidden sm:overflow-y-scroll p-4">
       <Button color="bg-emerald-700" onClick={() => setAdding(true)}>New Job</Button>
       <ul className="xs:hidden xs:h-0 sm:h-auto sm:block">
         {jobList}
