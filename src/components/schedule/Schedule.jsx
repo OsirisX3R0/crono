@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 
-import Column from "../core/Column"
 import Item from "./Item";
 
 const Schedule = () => {
@@ -10,11 +9,11 @@ const Schedule = () => {
   const scheduleList = schedule.map((item, i) => <Item key={i} item={item} />)
 
   return (
-    <Column>
+    <div className="sm:h-[89.5vh] overflow-y-scroll p-4">
       <ul className="w-full text-center">
         {scheduleList}
       </ul>
-    </Column>
+    </div>
   )
 }
 

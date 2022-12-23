@@ -3,7 +3,6 @@ import { GlobalContext } from "../../context/GlobalContext";
 import CronJob from "../../utils/CronJob";
 import Button from "../core/Button";
 
-import Column from "../core/Column"
 import Field from "../core/Field";
 import Job from "./Job";
 
@@ -35,13 +34,13 @@ const Jobs = () => {
   ) : null
 
   return (
-    <Column className="xs:h-4">
+    <div className="xs:h-64 sm:h-[89.5vh] overflow-y-scroll p-4">
       <Button color="bg-emerald-700" onClick={() => setAdding(true)}>New Job</Button>
       {addForm}      
       <ul className="xs:hidden xs:h-0 sm:h-auto sm:block">
         {jobList}
       </ul>
-    </Column>
+    </div>
   )
 }
 

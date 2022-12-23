@@ -1,5 +1,4 @@
 import React from "react";
-import Tooltip from "react-simple-tooltip"
 
 const Item = ({ item }) => (
   <li
