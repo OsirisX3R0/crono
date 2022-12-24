@@ -13,7 +13,7 @@ const modalStyles = {
 }
 const Modal = ({children, ...modalProps}) => {
   return (
-    <ReactModal {...modalProps} style={modalStyles}>
+    <ReactModal {...modalProps}>
     {children}
     </ReactModal>
   )

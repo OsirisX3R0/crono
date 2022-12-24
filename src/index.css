@@ -34,8 +34,16 @@ h3 {
   @apply text-2xl font-semibold;
 }
 
+h3.mini {
+  @apply text-lg
+}
+
 h4 {
   @apply text-xl;
+}
+
+h4.mini {
+  @apply text-base;
 }
 
 .form-field {
