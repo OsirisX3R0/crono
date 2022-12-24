@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-stone-800 text-slate-50;
+  @apply overflow-hidden bg-neutral-800 text-slate-50;
 
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -34,6 +34,26 @@ h3 {
   @apply text-2xl font-semibold;
 }
 
+h3.mini {
+  @apply text-lg
+}
+
 h4 {
   @apply text-xl;
+}
+
+h4.mini {
+  @apply text-base;
+}
+
+.form-field {
+  @apply bg-zinc-700 text-slate-200 p-2 rounded-md;
+}
+
+footer {
+  @apply w-full text-xs italic text-amber-200 mb-3 absolute bottom-0 flex justify-center gap-6;
+}
+
+footer .left {
+  @apply text-right;
 }

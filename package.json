@@ -1,6 +1,6 @@
 {
   "name": "crono",
-  "version": "1.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -9,9 +9,12 @@
     "cron-parser": "^4.6.0",
     "cronstrue": "^2.15.0",
     "dayjs": "^1.11.6",
+    "randomcolor": "^0.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
+    "react-simple-tooltip": "^2.6.3",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.0"
   },
