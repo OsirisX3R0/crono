@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
+// import Modal from 'react-modal'
 import { GlobalContext } from "../../context/GlobalContext";
 import CronJob from "../../utils/CronJob";
-
-import Column from "../core/Column"
+import Modal from '../core/Modal'
+import Field from "../core/Field";
+import Button from "../core/Button";
 import Job from "./Job";
 
 const Jobs = () => {
@@ -10,6 +12,7 @@ const Jobs = () => {
   const [name, setName] = useState('')
   const [schedule, setSchedule] = useState('')
   const [adding, setAdding] = useState(false)
+  const [showJobs, setShowJobs] = useState(false)
 
   const addJob = () => {
     setJobs(prevJobs => [...prevJobs, new CronJob({name,schedule})])
@@ -22,28 +25,59 @@ const Jobs = () => {
     setSchedule('')
   }
 
-  const listItemClass = i => `${i === schedule.length - 1 ? '' : 'border-b-2 border-stone-700 '}p-3`
+  const addFormStyles = {
+    content: {
+      width: '240px',
+      height: '240px',
+      backgroundColor: '#262626',
+      color: '#f8fafc',
+      margin: '75px auto 0'
+    }
+  }
 
-  const jobList = jobs.map((job, i) => <Job key={i} job={job} listItemClass={listItemClass(i)} />)
+  const jobsModalStyles = {
+    content:{
+    ...addFormStyles.content,
+      height: '400px'
+    }
+  }
 
-  const addForm = adding ? (
-    <div>
-      <div><label htmlFor="name">Name</label></div>
-      <div><input type="text" name="name" id="name" className="text-zinc-900" value={name} onInput={(e) => setName(e.target.value)} /></div>
-      <div><label htmlFor="schedule">Schedule</label></div>
-      <div><input type="text" name="schedule" id="schedule" className="text-zinc-900" value={schedule} onInput={(e) => setSchedule(e.target.value)} /></div>
-      <button className="bg-orange-900 rounded-md p-2" onClick={() => addJob()}>Add</button>
-    </div>
-  ) : null
+  const jobList = jobs.map((job, i) => <Job key={i} job={job} />)
 
-  return (
-    <Column left>
-      <button className="bg-green-900 rounded-md p-2" onClick={() => setAdding(true)}>New Job</button>
-      {addForm}      
+  const addForm = (
+    <Modal 
+      isOpen={adding}
+      onRequestClose={() => setAdding(false)}
+      style={addFormStyles}
+    >
+      <Field label="Name" className="mb-2" value={name} onInput={(e) => setName(e.target.value)} />
+      <Field label="Schedule" className="mb-2" value={schedule} onInput={(e) => setSchedule(e.target.value)} />
+      <Button color="bg-orange-700" onClick={() => addJob()}>Add</Button>
+    </Modal>
+  )
+
+  const jobsModal = (
+    <Modal 
+      isOpen={showJobs}
+      onRequestClose={() => setShowJobs(false)}
+      style={jobsModalStyles}
+    >
       <ul>
         {jobList}
       </ul>
-    </Column>
+    </Modal>
+  )
+
+  return (
+    <div className="xs:h-28 md:h-[78vh] xs:overflow-hidden md:overflow-y-scroll p-4">
+      <Button color="bg-emerald-700" className="xs:mb-2" onClick={() => setAdding(true)}>New Job</Button>
+      <Button color="bg-sky-600" className='xs:block md:hidden' onClick={() => setShowJobs(true)}>Show Jobs</Button>
+      <ul className="xs:hidden md:block xs:h-0 md:h-auto">
+        {jobList}
+      </ul>
+      {addForm}
+      {jobsModal}
+    </div>
   )
 }
 

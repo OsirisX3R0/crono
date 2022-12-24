@@ -1,21 +1,19 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 
-import Column from "../core/Column"
+import Item from "./Item";
 
 const Schedule = () => {
   const {schedule} = useContext(GlobalContext)
 
-  const listItemClass = i => `${i === schedule.length - 1 ? '' : 'border-b-2 border-stone-700 '}p-3`
-
-  const scheduleList = schedule.map((item, i) => <li key={i} className={listItemClass(i)}>{item.name} - {item.time}</li>)
+  const scheduleList = schedule.map((item, i) => <Item key={i} item={item} />)
 
   return (
-    <Column>
+    <div className="xs:h-[58vh] md:h-[78vh] overflow-y-scroll p-4">
       <ul className="w-full text-center">
         {scheduleList}
       </ul>
-    </Column>
+    </div>
   )
 }
 
